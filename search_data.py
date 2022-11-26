@@ -18,7 +18,7 @@ def search_val(word, data, column):
     found = []
     if len(data) > 0:
         for item in data:
-            if item != []  and item[int(column)-1] == word:
+            if item != []  and item[column] == word:
                 found.append(item)
         return found
     else:

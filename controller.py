@@ -31,7 +31,7 @@ def choice_todo():
     ch = st.radio("Выберите", ('Добавить сотрудника',
                   'Показать всех сотрудников', 'Поиск сотрудника', 'Поиск сотрудника по столбцу'))
     if ch:
-        filename = st.text_input("Введите имя файла: ", "phone.csv")
+        filename = st.text_input("Введите имя файла: ", "db.csv")
     if ch == 'Добавить сотрудника':
         sep = choice_sep()
         input_row = input_data()
@@ -52,9 +52,10 @@ def choice_todo():
             print_found_rows(item)
     elif ch == 'Поиск сотрудника по столбцу':
         word = st.text_input("Введите данные для поиска: ")
-        column = st.text_input("Введите номер столбца: ")
+        columns = {"Фамилия":0, "Имя":1, "Отчество":2,"Дата рождения":3, "Телефон":4,"Должность":5}
+        column = st.selectbox("Выберите столбец: ", ("Фамилия", "Имя", "Отчество","Дата рождения", "Телефон","Должность"))
         search = st.button('Поиск')
         if search:
             data = export_data(filename)
-            item = search_val(word, data, column)
+            item = search_val(word, data, columns[column])
             print_found_rows(item)

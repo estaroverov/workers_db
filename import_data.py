@@ -4,7 +4,7 @@ def import_data(data, filename, sep=None):
     with open(filename, 'a+', encoding='UTF-8') as file:
         if sep == None:
             file.write(','.join(data))
-            file.write(f"\n")
+            file.write("\n")
         else:
             file.write(sep.join(data))
-            file.write(f"\n")
+            file.write("\n")
